@@ -1,5 +1,4 @@
-import { getOrder } from '@/app/lib/data';
-import { formatOrderNumber } from '@/app/lib/utils';
+import Order from '../../../ui/orders/Order';
 
 export default function OrderDetail({
   searchParams,
@@ -11,14 +10,5 @@ export default function OrderDetail({
   const id = searchParams?.id || '';
   if (!id || id.length !== 5) return;
 
-  const nrocompro = formatOrderNumber(id);
-  const order = getOrder(nrocompro);
-
-  if (!order)
-    return (
-      <div>
-        <h2>No se encontro Orden de reparacion</h2>
-      </div>
-    );
-  return <div>Card Orden: {order.nombre}</div>;
+  return <Order id={id} />;
 }

@@ -70,3 +70,48 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
 
 // GSystem
 export const formatOrderNumber = (id: string) => `ORX0011000${id}`;
+
+export const getOrderState = (state: number) => {
+  if (state === 21) return 'PENDIENTE';
+  if (state === 22) return 'EN PROCESO';
+  if (state === 23) return 'FINALIZADA';
+};
+
+export const getOrderDiagnosis = (diagnosis: number) => {
+  if (diagnosis === 21) return 'PENDIENTE';
+  if (diagnosis === 22) return 'REPARADO';
+  if (diagnosis === 23) return 'SIN REPARACION';
+};
+
+export const getOrderUbication = (ubication: number) => {
+  if (ubication === 21) return 'SIN ENTREGAR';
+  if (ubication === 22) return 'ENTREGADO';
+};
+
+export const getOrderTier = (tier: number) => {
+  if (tier === 0) return 'NORMAL';
+  if (tier === 1) return '';
+  if (tier === 2) return '';
+  if (tier === 3) return 'ARMADOS';
+  if (tier === 4) return 'TURNOS/PRIORIDADES';
+  if (tier === 5) return 'GARANTIA REPARACION';
+  if (tier === 6) return '';
+  if (tier === 7) return '';
+  if (tier === 8) return 'BOXES';
+  if (tier === 9) return 'ABONADOS';
+  if (tier === 10) return 'GARANTIA COMPRA';
+};
+
+export const getOrderTierBackground = (tier: number) => {
+  if (tier === 0) return '';
+  if (tier === 1) return '';
+  if (tier === 2) return '';
+  if (tier === 3) return '';
+  if (tier === 4) return '';
+  if (tier === 5) return '';
+  if (tier === 6) return '';
+  if (tier === 7) return '';
+  if (tier === 8) return '';
+  if (tier === 9) return '';
+  if (tier === 10) return '';
+};
