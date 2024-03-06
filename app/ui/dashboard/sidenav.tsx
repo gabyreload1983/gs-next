@@ -3,6 +3,7 @@ import NavLinks from '@/app/ui/dashboard/nav-links';
 import Logo from '@/app/ui/logo';
 import { PowerIcon } from '@heroicons/react/24/outline';
 import { signOut } from '@/auth';
+import Search from '../search';
 
 export default function SideNav() {
   return (
@@ -15,6 +16,8 @@ export default function SideNav() {
           <Logo />
         </div>
       </Link>
+
+      <Search placeholder="Buscar Orden" />
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
         <NavLinks />
         <div className="hidden h-auto w-full grow rounded-md bg-gray-50 md:block"></div>

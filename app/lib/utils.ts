@@ -67,3 +67,6 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     totalPages,
   ];
 };
+
+// GSystem
+export const formatOrderNumber = (id: string) => `ORX0011000${id}`;
