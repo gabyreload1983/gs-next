@@ -2,17 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-input[type='number'] {
-  -moz-appearance: textfield;
-  appearance: textfield;
+body {
+  @apply bg-black text-white;
 }
 
-input[type='number']::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.link-menu {
+  @apply flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-500 p-3 text-sm font-medium text-white hover:bg-green-800 hover:text-gray-50 md:flex-none md:justify-start md:p-2 md:px-3;
 }
 
-input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.link-menu-active {
+  @apply bg-green-600 text-gray-950;
 }
