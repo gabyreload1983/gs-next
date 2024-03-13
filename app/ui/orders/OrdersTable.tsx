@@ -1,33 +1,39 @@
 import { Metadata } from 'next';
-import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
-import { ordersPcPending } from '../../lib/urbano';
+import {
+  formatDateToLocal,
+  formatCurrency,
+  getOrderStatusCode,
+} from '@/app/lib/utils';
 import Link from 'next/link';
+import { getOrders } from '@/app/lib/actions';
 
 export const metadata: Metadata = {
   title: 'PCs',
 };
 
-const getOrders = (sector: string, filter: string) => {
-  if (sector === 'pc' && filter === 'pendings')
-    return ordersPcPending.slice(0, 3);
-  if (sector === 'pc' && filter === 'myOrders')
-    return ordersPcPending.slice(3, 5);
-  if (sector === 'pc' && filter === 'inProcess')
-    return ordersPcPending.slice(6, 7);
-  if (sector === 'printers' && filter === 'pendings')
-    return ordersPcPending.slice(7, 12);
-};
+// const getOrders = (sector: string, filter: string) => {
+//   if (sector === 'pc' && filter === 'pendings')
+//     return ordersPcPending.slice(0, 3);
+//   if (sector === 'pc' && filter === 'myOrders')
+//     return ordersPcPending.slice(3, 5);
+//   if (sector === 'pc' && filter === 'inProcess')
+//     return ordersPcPending.slice(6, 7);
+//   if (sector === 'printers' && filter === 'pendings')
+//     return ordersPcPending.slice(7, 12);
+// };
 
-export default function OrdersTable({
+export default async function OrdersTable({
+  status,
   sector,
-  filter,
+  technical,
 }: {
+  status: string;
   sector: string;
-  filter: string;
+  technical: string;
 }) {
-  if (!filter || !sector) return;
+  const statusCode = getOrderStatusCode(status);
 
-  const orders = getOrders(sector, filter);
+  const orders = await getOrders({ sector, technical, status: statusCode });
 
   return (
     <div className="mt-6 flow-root">

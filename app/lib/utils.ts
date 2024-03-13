@@ -77,6 +77,13 @@ export const getOrderState = (state: number) => {
   if (state === 23) return 'FINALIZADA';
 };
 
+export const getOrderStatusCode = (status: string) => {
+  if (status === 'pending') return 21;
+  if (status === 'inProcess') return 22;
+  if (status === 'finish') return 23;
+  return '';
+};
+
 export const getOrderDiagnosis = (diagnosis: number) => {
   if (diagnosis === 21) return 'PENDIENTE';
   if (diagnosis === 22) return 'REPARADO';

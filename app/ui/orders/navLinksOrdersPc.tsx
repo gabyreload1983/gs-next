@@ -5,46 +5,34 @@ import {
   CheckIcon,
   CircleStackIcon,
 } from '@heroicons/react/24/outline';
-import clsx from 'clsx';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 
-// Map of links to display in the side navigation.
-// Depending on the size of the application, this would be stored in a database.
+const technical = 'gabyt';
 const links = [
   {
     name: 'Pendientes',
-    href: '/dashboard/orders/pc?filter=pendings',
+    href: `/dashboard/orders/pc?sector=.PC&status=pending`,
     icon: ClipboardDocumentListIcon,
   },
   {
     name: 'Mis Ordenes',
-    href: '/dashboard/orders/pc?filter=myOrders',
+    href: `/dashboard/orders/pc?technical=${technical}&status=inProcess`,
     icon: CheckIcon,
   },
   {
     name: 'En Proceso',
-    href: '/dashboard/orders/pc?filter=inProcess',
+    href: `/dashboard/orders/pc?status=inProcess`,
     icon: CircleStackIcon,
   },
 ];
 
 export default function NavLinksOrdersPc() {
-  const searchParams = useSearchParams();
-  const param = searchParams.get('filter') || '';
-
   return (
     <>
       {links.map((link) => {
         const LinkIcon = link.icon;
         return (
-          <Link
-            key={link.name}
-            href={link.href}
-            className={clsx('link-menu', {
-              'link-menu-active': param === link.href.split('=')[1],
-            })}
-          >
+          <Link key={link.name} href={link.href} className="link-menu">
             <LinkIcon className="w-6" />
             <p className="hidden md:block">{link.name}</p>
           </Link>

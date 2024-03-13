@@ -6,20 +6,23 @@ export const metadata: Metadata = {
   title: 'PCs',
 };
 
-export default function PC({
+export default async function PC({
   searchParams,
 }: {
   searchParams?: {
-    filter?: string;
+    status?: string;
+    sector?: string;
+    technical?: string;
   };
 }) {
-  const sector = 'pc';
-  const filter = searchParams?.filter || '';
+  const status = searchParams?.status || '';
+  const sector = searchParams?.sector || '';
+  const technical = searchParams?.technical || '';
 
   return (
     <main>
       <NavbarOrdersPc />
-      <OrdersTable sector={sector} filter={filter} />
+      <OrdersTable status={status} sector={sector} technical={technical} />
     </main>
   );
 }

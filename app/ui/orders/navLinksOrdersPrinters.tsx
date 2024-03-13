@@ -9,22 +9,21 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
-// Map of links to display in the side navigation.
-// Depending on the size of the application, this would be stored in a database.
+const technical = 'gabyt';
 const links = [
   {
     name: 'Pendientes',
-    href: '/dashboard/orders/printers?filter=pendings',
+    href: `/dashboard/orders/printers?sector=.imp&state=pending`,
     icon: ClipboardDocumentListIcon,
   },
   {
     name: 'Mis Ordenes',
-    href: '/dashboard/orders/printers?filter=myOrders',
+    href: `/dashboard/orders/printers?technical=${technical}&state=inProcess`,
     icon: CheckIcon,
   },
   {
     name: 'En Proceso',
-    href: '/dashboard/orders/printers?filter=inProcess',
+    href: `/dashboard/orders/printers?state=inProcess`,
     icon: CircleStackIcon,
   },
 ];
