@@ -7,7 +7,7 @@ import {
 import Link from 'next/link';
 import { getOrders } from '@/app/lib/data';
 import { Order } from '@/app/lib/definitions';
-import { DocumentMagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { MagnifyingGlassIcon, BookmarkIcon } from '@heroicons/react/24/outline';
 
 export const metadata: Metadata = {
   title: 'PCs',
@@ -92,7 +92,7 @@ export default async function OrdersTable({
                   key={order.nrocompro}
                   className={`${getOrderTierBackground(
                     order.prioridad,
-                  )} w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg`}
+                  )} w-full border-b py-3 text-sm `}
                 >
                   <td className="whitespace-nowrap px-3 py-3">
                     {order.nrocompro}
@@ -114,8 +114,11 @@ export default async function OrdersTable({
                       key={order.nrocompro}
                       href={`/dashboard/orders/${order.nrocompro}`}
                     >
-                      <DocumentMagnifyingGlassIcon className="hover:text-green-800" />
+                      <MagnifyingGlassIcon className="w-4 hover:text-green-800" />
                     </Link>
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-3">
+                    <BookmarkIcon className="w-4 cursor-pointer hover:text-green-800" />
                   </td>
                 </tr>
               ))}
