@@ -3,20 +3,15 @@
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
+import { formatNroOrder } from '../lib/utils';
 
 export default function Search({ placeholder }: { placeholder: string }) {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
 
   const handleSearch = useDebouncedCallback((term) => {
-    const params = new URLSearchParams(searchParams);
-    if (term) {
-      params.set('id', term);
-    } else {
-      params.delete('id');
-    }
     if (term.length === 5) {
-      replace(`/dashboard/orders/detail?${params.toString()}`);
+      replace(`/dashboard/orders/${formatNroOrder(term)}`);
     }
   }, 500);
 
@@ -31,7 +26,6 @@ export default function Search({ placeholder }: { placeholder: string }) {
         onChange={(e) => {
           handleSearch(e.target.value);
         }}
-        defaultValue={searchParams.get('id')?.toString()}
         onFocus={(e) => {
           handleSearch(e.target.value);
         }}

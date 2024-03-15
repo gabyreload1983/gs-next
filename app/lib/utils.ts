@@ -135,3 +135,5 @@ export const getPathOrdersPc = (filter: string, sector: string) => {
 
   return '';
 };
+
+export const formatNroOrder = (id: string) => `ORX0011000${id}`;
