@@ -25,8 +25,8 @@ export default async function OrdersTable({
   return (
     <div className="mt-6 flow-root text-gray-900">
       <div className="inline-block min-w-full align-middle">
-        <div className="rounded-lg p-2 md:bg-gray-50 md:pt-0">
-          <div className="md:hidden">
+        <div className="rounded-lg p-2 md:bg-gray-50">
+          <div className="lg:hidden">
             {orders?.map((order) => (
               <Link
                 key={order.nrocompro}
@@ -59,7 +59,7 @@ export default async function OrdersTable({
             ))}
           </div>
 
-          <table className="hidden min-w-full bg-white  md:table">
+          <table className="hidden min-w-full bg-white lg:table">
             <thead className="rounded-lg text-left text-sm font-normal">
               <tr>
                 <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
