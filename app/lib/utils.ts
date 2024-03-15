@@ -123,14 +123,15 @@ export const getOrderTierBackground = (tier: number) => {
   if (tier === 10) return '';
 };
 
-export const getPathOrdersPc = (filter: string) => {
+export const getPathOrdersPc = (filter: string, sector: string) => {
   const technical = 'GABYT';
+  const sectorCode = sector === 'pc' ? '.PC' : '.IMP';
   if (filter === 'pending')
-    return `http://localhost:3400/api/orders/next?status=21&sector=.PC`;
+    return `http://localhost:3400/api/orders/next?status=21&sector=${sectorCode}`;
   if (filter === 'technical')
     return `http://localhost:3400/api/orders/next?status=22&technical=${technical}`;
   if (filter === 'inProcess')
-    return `http://localhost:3400/api/orders/next?status=22&sector=.PC`;
+    return `http://localhost:3400/api/orders/next?status=22&sector=${sectorCode}`;
 
   return '';
 };

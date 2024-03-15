@@ -6,15 +6,15 @@ export default function Pc({
   searchParams,
 }: {
   searchParams?: {
-    pcMenu?: string;
+    printersMenu?: string;
   };
 }) {
-  const pcMenu = searchParams?.pcMenu || '';
+  const printersMenu = searchParams?.printersMenu || '';
 
   return (
     <main>
       <Suspense fallback={<OrdersTableSkeleton />}>
-        <OrdersTable filter={pcMenu} sector="pc" />
+        <OrdersTable filter={printersMenu} sector="printers" />
       </Suspense>
     </main>
   );

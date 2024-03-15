@@ -9,8 +9,14 @@ export const metadata: Metadata = {
   title: 'PCs',
 };
 
-export default async function OrdersTable({ filter }: { filter: string }) {
-  const orders: Order[] = await getOrders({ filter });
+export default async function OrdersTable({
+  filter,
+  sector,
+}: {
+  filter: string;
+  sector: string;
+}) {
+  const orders: Order[] = await getOrders({ filter, sector });
 
   return (
     <div className="mt-6 flow-root text-gray-900">
@@ -20,9 +26,7 @@ export default async function OrdersTable({ filter }: { filter: string }) {
             {orders?.map((order) => (
               <Link
                 key={order.nrocompro}
-                href={`/dashboard/orders/detail?&id=${order.nrocompro.slice(
-                  10,
-                )}`}
+                href={`/dashboard/orders/${order.nrocompro}`}
               >
                 <div className="mb-2 w-full rounded-md border-2 border-lime-600 bg-white p-4">
                   <div className="flex items-center justify-between border-b pb-4">
@@ -90,9 +94,7 @@ export default async function OrdersTable({ filter }: { filter: string }) {
                   <td className="whitespace-nowrap px-3 py-3">
                     <Link
                       key={order.nrocompro}
-                      href={`/dashboard/orders/detail?&id=${order.nrocompro.slice(
-                        10,
-                      )}`}
+                      href={`/dashboard/orders/${order.nrocompro}`}
                     >
                       <DocumentMagnifyingGlassIcon className="hover:text-green-800" />
                     </Link>

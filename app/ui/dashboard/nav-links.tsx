@@ -21,7 +21,7 @@ const links = [
   },
   {
     name: 'Impresoras',
-    href: '/dashboard/orders/printers',
+    href: '/dashboard/printers?printersMenu=pending',
     icon: PrinterIcon,
   },
   { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },

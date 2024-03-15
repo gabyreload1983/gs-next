@@ -13,24 +13,24 @@ const technical = 'gabyt';
 const links = [
   {
     name: 'Pendientes',
-    href: `/dashboard/orders/printers?sector=.imp&state=pending`,
+    href: `/dashboard/printers?printersMenu=pending`,
     icon: ClipboardDocumentListIcon,
   },
   {
     name: 'Mis Ordenes',
-    href: `/dashboard/orders/printers?technical=${technical}&state=inProcess`,
+    href: `/dashboard/printers?printersMenu=technical`,
     icon: CheckIcon,
   },
   {
     name: 'En Proceso',
-    href: `/dashboard/orders/printers?state=inProcess`,
+    href: `/dashboard/printers?printersMenu=inProcess`,
     icon: CircleStackIcon,
   },
 ];
 
 export default function NavLinksOrders() {
   const searchParams = useSearchParams();
-  const param = searchParams.get('filter') || '';
+  const param = searchParams.get('printersMenu') || '';
 
   return (
     <>
