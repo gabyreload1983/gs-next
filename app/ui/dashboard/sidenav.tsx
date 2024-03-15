@@ -2,7 +2,6 @@ import Link from 'next/link';
 import NavLinks from '@/app/ui/dashboard/nav-links';
 import Logo from '@/app/ui/logo';
 import { PowerIcon } from '@heroicons/react/24/outline';
-import { signOut } from '@/auth';
 import Search from '../search';
 
 export default function SideNav() {
@@ -24,7 +23,7 @@ export default function SideNav() {
         <form
           action={async () => {
             'use server';
-            await signOut();
+            console.log('Logout');
           }}
         >
           <button className="link-menu w-full">
