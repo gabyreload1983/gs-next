@@ -16,7 +16,7 @@ import { usePathname } from 'next/navigation';
 const links = [
   {
     name: 'PCs',
-    href: '/dashboard/orders/pc',
+    href: '/dashboard/pc?pcMenu=pending',
     icon: ComputerDesktopIcon,
   },
   {
@@ -45,7 +45,7 @@ export default function NavLinks() {
             key={link.name}
             href={link.href}
             className={clsx('link-menu', {
-              'link-menu-active': pathname === link.href,
+              'link-menu-active': pathname === link.href.split('?')[0],
             })}
           >
             <LinkIcon className="w-6" />

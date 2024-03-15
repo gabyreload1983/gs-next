@@ -140,31 +140,3 @@ export async function authenticate(
     throw error;
   }
 }
-
-export const getOrders = async ({
-  status,
-  sector,
-  technical,
-}: {
-  status: number | string;
-  sector: string;
-  technical: string;
-}) => {
-  const path = `http://localhost:3400/api/orders/next?technical=${technical}&status=${status}&sector=${sector}`;
-
-  console.log(path);
-
-  try {
-    const data = await fetch(path, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    const response = await data.json();
-    if (response.status === 'success') return response.payload;
-  } catch (error) {
-    console.log(error);
-  }
-};
