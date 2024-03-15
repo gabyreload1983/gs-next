@@ -30,6 +30,7 @@ export default async function OrdersTable({
           <div className="lg:hidden">
             {orders?.map((order) => (
               <div
+                key={order.nrocompro}
                 className={` mb-2 w-full rounded-md border-2 border-lime-600 bg-white p-4`}
               >
                 <div className="border-b pb-4">
