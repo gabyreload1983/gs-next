@@ -3,6 +3,7 @@ import {
   formatDateToLocal,
   getOrderTier,
   getOrderTierBackground,
+  isPending,
 } from '@/app/lib/utils';
 import Link from 'next/link';
 import { getOrders } from '@/app/lib/data';
@@ -118,7 +119,9 @@ export default async function OrdersTable({
                     </Link>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    <BookmarkIcon className="w-4 cursor-pointer hover:text-green-800" />
+                    {isPending(order.estado) && (
+                      <BookmarkIcon className="w-4 cursor-pointer hover:text-green-800" />
+                    )}
                   </td>
                 </tr>
               ))}

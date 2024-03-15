@@ -137,3 +137,6 @@ export const getPathOrdersPc = (filter: string, sector: string) => {
 };
 
 export const formatNroOrder = (id: string) => `ORX0011000${id}`;
+
+export const isPending = (status: number): Boolean =>
+  status === 21 ? true : false;
