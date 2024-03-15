@@ -56,11 +56,15 @@ export default async function OrdersTable({
                       key={order.nrocompro}
                       href={`/dashboard/orders/${order.nrocompro}`}
                     >
-                      <span className="rounded-md bg-slate-500 p-2">
+                      <span className="rounded-md bg-slate-500 p-2 hover:bg-slate-600 hover:text-gray-50">
                         Detalle
                       </span>
                     </Link>
-                    <span className="rounded-md bg-green-300 p-2">Tomar</span>
+                    {isPending(order.estado) && (
+                      <span className="cursor-pointer rounded-md bg-green-300 p-2 hover:bg-green-600 hover:text-gray-200">
+                        Tomar
+                      </span>
+                    )}
                   </div>
                   <p>{order.tecnico}</p>
                 </div>
