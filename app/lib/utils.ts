@@ -110,7 +110,7 @@ export const getOrderTier = (tier: number) => {
 };
 
 export const getOrderTierBackground = (tier: number) => {
-  if (tier === 0) return '';
+  if (tier === 0) return 'bg-gray-300';
   if (tier === 1) return 'bg-orange-300';
   if (tier === 2) return 'bg-stone-600';
   if (tier === 3) return 'bg-red-300';

@@ -1,5 +1,9 @@
 import { Metadata } from 'next';
-import { formatDateToLocal, getOrderTierBackground } from '@/app/lib/utils';
+import {
+  formatDateToLocal,
+  getOrderTier,
+  getOrderTierBackground,
+} from '@/app/lib/utils';
 import Link from 'next/link';
 import { getOrders } from '@/app/lib/data';
 import { Order } from '@/app/lib/definitions';
@@ -46,7 +50,7 @@ export default async function OrdersTable({
                   </div>
                   <div className="flex w-full items-center justify-between pt-4">
                     <p className="text-xl font-medium">
-                      Prioridad: {order.prioridad}
+                      Tier: {getOrderTier(order.prioridad)}
                     </p>
                     <p>{order.tecnico}</p>
                   </div>
@@ -89,7 +93,7 @@ export default async function OrdersTable({
                     {order.nombre}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {order.prioridad}
+                    {getOrderTier(order.prioridad)}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     {formatDateToLocal(order.ingresado)}
