@@ -11,15 +11,15 @@ export default function OrderDetail({ order }: { order: Order }) {
   return (
     <div className="rounded-lg bg-gray-700 p-2">
       <div className="mb-3 p-3">
+        <p
+          className={`${getOrderTierBackground(
+            order.prioridad,
+          )} mb-2 rounded-lg px-2 py-1 text-center text-xs text-gray-950`}
+        >
+          Tier {getOrderTier(order.prioridad)}
+        </p>
         <div className=" flex items-center justify-between">
           <strong className="text-lg">{order.nrocompro}</strong>
-          <strong
-            className={`${getOrderTierBackground(
-              order.prioridad,
-            )} rounded-lg px-2 py-1 text-xs text-gray-950`}
-          >
-            Tier {getOrderTier(order.prioridad)}
-          </strong>
         </div>
         <p>Fecha: {order.ingresado.slice(0, 10)}</p>
         <p className="font-semibold">

@@ -28,34 +28,42 @@ export default async function OrdersTable({
         <div className="rounded-lg p-2 md:bg-gray-50">
           <div className="lg:hidden">
             {orders?.map((order) => (
-              <Link
-                key={order.nrocompro}
-                href={`/dashboard/orders/${order.nrocompro}`}
+              <div
+                className={` mb-2 w-full rounded-md border-2 border-lime-600 bg-white p-4`}
               >
-                <div
-                  className={`${getOrderTierBackground(
-                    order.prioridad,
-                  )} mb-2 w-full rounded-md border-2 border-lime-600 bg-white p-4`}
-                >
-                  <div className="flex items-center justify-between border-b pb-4">
-                    <div>
-                      <div className="mb-2">
-                        <p>{order.nombre}</p>
-                      </div>
-                      <p className="pb-2 text-sm text-gray-950">
-                        {order.nrocompro}
-                      </p>
-                      <p>{formatDateToLocal(order.ingresado)}</p>
-                    </div>
+                <div className="border-b pb-4">
+                  <div className="mb-2 flex items-center justify-center gap-2 text-sm">
+                    <strong
+                      className={`${getOrderTierBackground(
+                        order.prioridad,
+                      )} rounded-lg px-3 py-1 text-xs text-gray-950`}
+                    >
+                      Tier {getOrderTier(order.prioridad)}
+                    </strong>
                   </div>
-                  <div className="flex w-full items-center justify-between pt-4">
-                    <p className="text-xl font-medium">
-                      Tier: {getOrderTier(order.prioridad)}
+                  <div className="mb-2 flex items-center justify-between gap-2 text-sm">
+                    <p className="font-semibold text-gray-950">
+                      {order.nrocompro}
                     </p>
-                    <p>{order.tecnico}</p>
+                    <p>{formatDateToLocal(order.ingresado)}</p>
                   </div>
+                  <p className="text-lg font-medium">{order.nombre}</p>
                 </div>
-              </Link>
+                <div className="flex w-full items-center justify-between pt-4">
+                  <div className="flex items-center justify-center gap-2">
+                    <Link
+                      key={order.nrocompro}
+                      href={`/dashboard/orders/${order.nrocompro}`}
+                    >
+                      <span className="rounded-md bg-slate-500 p-2">
+                        Detalle
+                      </span>
+                    </Link>
+                    <span className="rounded-md bg-green-300 p-2">Tomar</span>
+                  </div>
+                  <p>{order.tecnico}</p>
+                </div>
+              </div>
             ))}
           </div>
 
