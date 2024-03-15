@@ -111,16 +111,16 @@ export const getOrderTier = (tier: number) => {
 
 export const getOrderTierBackground = (tier: number) => {
   if (tier === 0) return '';
-  if (tier === 1) return '';
-  if (tier === 2) return '';
-  if (tier === 3) return '';
-  if (tier === 4) return '';
-  if (tier === 5) return '';
-  if (tier === 6) return '';
-  if (tier === 7) return '';
-  if (tier === 8) return '';
-  if (tier === 9) return '';
-  if (tier === 10) return '';
+  if (tier === 1) return 'bg-orange-300';
+  if (tier === 2) return 'bg-stone-600';
+  if (tier === 3) return 'bg-red-300';
+  if (tier === 4) return 'bg-orange-600';
+  if (tier === 5) return 'bg-yellow-600';
+  if (tier === 6) return 'bg-green-600';
+  if (tier === 7) return 'bg-teal-600';
+  if (tier === 8) return 'bg-indigo-600';
+  if (tier === 9) return 'bg-fuchsia-600';
+  if (tier === 10) return 'bg-rose-600';
 };
 
 export const getPathOrdersPc = (filter: string, sector: string) => {

@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { formatDateToLocal } from '@/app/lib/utils';
+import { formatDateToLocal, getOrderTierBackground } from '@/app/lib/utils';
 import Link from 'next/link';
 import { getOrders } from '@/app/lib/data';
 import { Order } from '@/app/lib/definitions';
@@ -28,13 +28,17 @@ export default async function OrdersTable({
                 key={order.nrocompro}
                 href={`/dashboard/orders/${order.nrocompro}`}
               >
-                <div className="mb-2 w-full rounded-md border-2 border-lime-600 bg-white p-4">
+                <div
+                  className={`${getOrderTierBackground(
+                    order.prioridad,
+                  )} mb-2 w-full rounded-md border-2 border-lime-600 bg-white p-4`}
+                >
                   <div className="flex items-center justify-between border-b pb-4">
                     <div>
                       <div className="mb-2">
                         <p>{order.nombre}</p>
                       </div>
-                      <p className="pb-2 text-sm text-gray-500">
+                      <p className="pb-2 text-sm text-gray-950">
                         {order.nrocompro}
                       </p>
                       <p>{formatDateToLocal(order.ingresado)}</p>
@@ -74,7 +78,9 @@ export default async function OrdersTable({
               {orders?.map((order) => (
                 <tr
                   key={order.nrocompro}
-                  className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
+                  className={`${getOrderTierBackground(
+                    order.prioridad,
+                  )} w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg`}
                 >
                   <td className="whitespace-nowrap px-3 py-3">
                     {order.nrocompro}
