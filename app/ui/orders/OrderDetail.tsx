@@ -45,12 +45,12 @@ export default function OrderDetail({ order }: { order: Order }) {
           </div>
         </div>
 
-        <p>
+        <p className="py-3">
           {' '}
           <strong>Falla: </strong>
           {order.falla}
         </p>
-        <p>
+        <p className="py-3">
           <strong>Diagnostico: </strong> {order.diagnostico}
         </p>
       </div>
