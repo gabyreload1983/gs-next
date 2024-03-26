@@ -101,7 +101,12 @@ export default async function OrdersTable({
                   )} w-full border-b py-3 text-sm `}
                 >
                   <td className="whitespace-nowrap px-3 py-3">
-                    {order.nrocompro}
+                    <Link
+                      key={order.nrocompro}
+                      href={`/dashboard/orders/${order.nrocompro}`}
+                    >
+                      {order.nrocompro}
+                    </Link>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     {order.nombre}
@@ -120,12 +125,20 @@ export default async function OrdersTable({
                       key={order.nrocompro}
                       href={`/dashboard/orders/${order.nrocompro}`}
                     >
-                      <MagnifyingGlassIcon className="w-4 hover:text-green-800" />
+                      <MagnifyingGlassIcon
+                        className="w-4 hover:text-green-800"
+                        data-twe-toggle="tooltip"
+                        title="Detalle"
+                      />
                     </Link>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     {isPending(order.estado) && (
-                      <BookmarkIcon className="w-4 cursor-pointer hover:text-green-800" />
+                      <BookmarkIcon
+                        className="w-4 cursor-pointer hover:text-green-800"
+                        data-twe-toggle="tooltip"
+                        title="Tomar Orden"
+                      />
                     )}
                   </td>
                 </tr>
