@@ -1,0 +1,5 @@
+import NotFoundPage from '@/app/ui/NotFoundPage';
+
+export default function NotFound() {
+  return <NotFoundPage />;
+}
