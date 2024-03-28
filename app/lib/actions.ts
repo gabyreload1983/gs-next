@@ -140,3 +140,11 @@ export async function authenticate(
     throw error;
   }
 }
+
+export async function saveOrder(id: string) {
+  console.log(`Save order ${id}`);
+}
+
+export async function closeOrder(id: string) {
+  console.log(`Close order ${id}`);
+}
