@@ -23,7 +23,7 @@ export default function ProductsInOrder({ order }: { order: Order }) {
       </div>
       <div className="mt-auto">
         <Link
-          href={`/dashboard/orders/edit/${order.nrocompro}`}
+          href={`/dashboard/orders/${order.nrocompro}`}
           className="rounded-md bg-amber-200 px-3 py-2 text-black hover:bg-amber-300"
         >
           Editar
