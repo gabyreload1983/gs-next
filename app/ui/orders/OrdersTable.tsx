@@ -8,7 +8,8 @@ import {
 import Link from 'next/link';
 import { getOrders } from '@/app/lib/data';
 import { Order } from '@/app/lib/definitions';
-import { MagnifyingGlassIcon, BookmarkIcon } from '@heroicons/react/24/outline';
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { TakeOrderIconButton, TakeOrderMovilButton } from './TakeOrderButton';
 
 export const metadata: Metadata = {
   title: 'PCs',
@@ -62,9 +63,7 @@ export default async function OrdersTable({
                       </span>
                     </Link>
                     {isPending(order.estado) && (
-                      <span className="cursor-pointer rounded-md bg-green-300 p-2 hover:bg-green-600 hover:text-gray-200">
-                        Tomar
-                      </span>
+                      <TakeOrderMovilButton id={order.nrocompro} />
                     )}
                   </div>
                   <p>{order.tecnico}</p>
@@ -134,11 +133,7 @@ export default async function OrdersTable({
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     {isPending(order.estado) && (
-                      <BookmarkIcon
-                        className="w-4 cursor-pointer hover:text-green-800"
-                        data-twe-toggle="tooltip"
-                        title="Tomar Orden"
-                      />
+                      <TakeOrderIconButton id={order.nrocompro} />
                     )}
                   </td>
                 </tr>

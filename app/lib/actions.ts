@@ -141,6 +141,10 @@ export async function authenticate(
   }
 }
 
+export async function takeOrder(id: string) {
+  console.log(`Take order ${id}`);
+}
+
 export async function saveOrder(id: string) {
   console.log(`Save order ${id}`);
 }
