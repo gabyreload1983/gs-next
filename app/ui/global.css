@@ -13,3 +13,9 @@ body {
 .link-menu-active {
   @apply bg-green-600 text-gray-950;
 }
+
+textarea {
+  field-sizing: content;
+  max-height: 120px;
+  min-height: 70px;
+}

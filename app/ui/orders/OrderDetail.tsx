@@ -6,7 +6,7 @@ import {
   getOrderTierBackground,
   getOrderUbication,
 } from '@/app/lib/utils';
-import Link from 'next/link';
+import TechEditOrderDetail from './TechEditOrderDetail';
 
 export default function OrderDetail({ order }: { order: Order }) {
   return (
@@ -51,17 +51,7 @@ export default function OrderDetail({ order }: { order: Order }) {
           <strong>Falla: </strong>
           {order.falla}
         </p>
-        <p className="py-3">
-          <strong>Diagnostico: </strong> {order.diagnostico}
-        </p>
-        <div className="mt-3">
-          <Link
-            href={`/dashboard/orders/edit/detail?id=${order.nrocompro}`}
-            className="rounded-md bg-amber-200 px-3 py-2 text-black hover:bg-amber-300"
-          >
-            Editar
-          </Link>
-        </div>
+        <TechEditOrderDetail order={order} />
       </div>
     </div>
   );
