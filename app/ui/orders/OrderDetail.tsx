@@ -6,10 +6,13 @@ import {
   getOrderTier,
   getOrderTierBackground,
   getOrderUbication,
+  isUnDelivery,
+  isFinished,
   isInProcess,
 } from '@/app/lib/utils';
 import TechEditOrderDetail from './TechEditOrderDetail';
 import Diagnosis from './Diagnosis';
+import OutOrder from './OutOrder';
 
 export default function OrderDetail({ order }: { order: Order }) {
   return (
@@ -58,6 +61,9 @@ export default function OrderDetail({ order }: { order: Order }) {
           <TechEditOrderDetail order={order} />
         ) : (
           <Diagnosis order={order} />
+        )}
+        {isFinished(order.estado) && isUnDelivery(order.ubicacion) && (
+          <OutOrder order={order} />
         )}
       </div>
     </div>

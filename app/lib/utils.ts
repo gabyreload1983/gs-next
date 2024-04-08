@@ -114,6 +114,9 @@ export const isInProcess = (status: number): Boolean =>
 export const isFinished = (status: number): Boolean =>
   status === 23 ? true : false;
 
+export const isUnDelivery = (ubication: number): Boolean =>
+  ubication === 21 ? true : false;
+
 export const canEdit = (codeTechnical: string): Boolean => {
   const user = getUser();
   return codeTechnical === user.code_technical;
