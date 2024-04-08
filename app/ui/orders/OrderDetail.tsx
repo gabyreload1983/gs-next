@@ -9,6 +9,7 @@ import {
   isUnDelivery,
   isFinished,
   isInProcess,
+  validateRole,
 } from '@/app/lib/utils';
 import TechEditOrderDetail from './TechEditOrderDetail';
 import Diagnosis from './Diagnosis';
@@ -17,7 +18,7 @@ import OutOrder from './OutOrder';
 export default function OrderDetail({ order }: { order: Order }) {
   return (
     <div className="rounded-lg bg-gray-700 p-2">
-      <div className="mb-3 p-3">
+      <div className="p-3">
         <p
           className={`${getOrderTierBackground(
             order.prioridad,
@@ -57,14 +58,16 @@ export default function OrderDetail({ order }: { order: Order }) {
           <strong>Falla: </strong>
           {order.falla}
         </p>
-        {isInProcess(order.estado) && canEdit(order.tecnico) ? (
+        {validateRole(['premium', 'technical']) &&
+        isInProcess(order.estado) &&
+        canEdit(order.tecnico) ? (
           <TechEditOrderDetail order={order} />
         ) : (
           <Diagnosis order={order} />
         )}
-        {isFinished(order.estado) && isUnDelivery(order.ubicacion) && (
-          <OutOrder order={order} />
-        )}
+        {validateRole(['premium', 'saler']) &&
+          isFinished(order.estado) &&
+          isUnDelivery(order.ubicacion) && <OutOrder order={order} />}
       </div>
     </div>
   );

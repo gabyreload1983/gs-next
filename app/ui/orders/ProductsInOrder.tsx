@@ -1,4 +1,5 @@
 import { Order } from '@/app/lib/definitions';
+import { validateRole } from '@/app/lib/utils';
 import Link from 'next/link';
 
 export default function ProductsInOrder({ order }: { order: Order }) {
@@ -21,13 +22,15 @@ export default function ProductsInOrder({ order }: { order: Order }) {
         <div>Total</div>
         <div className="ml-auto">${order.total.toFixed()}</div>
       </div>
-      <div className="mt-auto">
-        <Link
-          href={`/dashboard/orders/${order.nrocompro}`}
-          className="rounded-md bg-amber-200 px-3 py-2 text-black hover:bg-amber-300"
-        >
-          Editar
-        </Link>
+      <div className="mt-auto py-2">
+        {validateRole(['premium']) && (
+          <Link
+            href={`/dashboard/orders/${order.nrocompro}`}
+            className="rounded-md bg-amber-200 px-3 py-2 text-black hover:bg-amber-300"
+          >
+            Editar
+          </Link>
+        )}
       </div>
     </div>
   );

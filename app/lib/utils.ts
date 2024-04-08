@@ -121,3 +121,8 @@ export const canEdit = (codeTechnical: string): Boolean => {
   const user = getUser();
   return codeTechnical === user.code_technical;
 };
+
+export const validateRole = (roles: string[]): Boolean => {
+  const user = getUser();
+  return roles.includes(user.role);
+};
