@@ -1,3 +1,11 @@
+export type User = {
+  _id: string;
+  email: string;
+  code_technical: string;
+  first_name: string;
+  last_name: string;
+  role: string;
+};
 export type Order = {
   nrocompro: string;
   codigo: string;

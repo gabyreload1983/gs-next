@@ -17,3 +17,9 @@ export async function closeOrder(order: Order) {
     `Close order ${order.nrocompro} ${order.diagnostico} ${order.costo}`,
   );
 }
+
+export async function freeOrder(order: Order) {
+  console.log(
+    `Free order ${order.nrocompro} ${order.diagnostico} ${order.costo}`,
+  );
+}

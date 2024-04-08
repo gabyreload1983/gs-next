@@ -1,3 +1,5 @@
+import { User } from './definitions';
+
 export const formatCurrency = (amount: number) => {
   return (amount / 100).toLocaleString('en-US', {
     style: 'currency',
@@ -20,6 +22,18 @@ export const formatDateToLocal = (
 };
 
 // GSystem
+export const getUser = (): User => {
+  const user = {
+    _id: '65b91cd1b7587cd52ea407dc',
+    email: 'ggodoy@sinapsis.com.ar',
+    code_technical: 'GABYT',
+    first_name: 'gabriel',
+    last_name: 'godoy',
+    role: 'technical',
+  };
+
+  return user;
+};
 export const formatOrderNumber = (id: string) => `ORX0011000${id}`;
 
 export const getOrderState = (state: number) => {
@@ -75,7 +89,9 @@ export const getOrderTierBackground = (tier: number) => {
 };
 
 export const getPathOrdersPc = (filter: string, sector: string) => {
-  const technical = 'GABYT';
+  const user = getUser();
+  const technical = user.code_technical;
+
   const sectorCode = sector === 'pc' ? '.PC' : '.IMP';
   if (filter === 'pending')
     return `http://localhost:3400/api/orders/next?status=21&sector=${sectorCode}`;
@@ -91,3 +107,14 @@ export const formatNroOrder = (id: string) => `ORX0011000${id}`;
 
 export const isPending = (status: number): Boolean =>
   status === 21 ? true : false;
+
+export const isInProcess = (status: number): Boolean =>
+  status === 22 ? true : false;
+
+export const isFinished = (status: number): Boolean =>
+  status === 23 ? true : false;
+
+export const canEdit = (codeTechnical: string): Boolean => {
+  const user = getUser();
+  return codeTechnical === user.code_technical;
+};

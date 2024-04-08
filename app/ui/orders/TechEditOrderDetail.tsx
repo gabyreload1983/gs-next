@@ -1,7 +1,7 @@
 'use client';
 import { Order } from '@/app/lib/definitions';
 
-import { closeOrder, saveOrder } from '@/app/lib/actions';
+import { closeOrder, freeOrder, saveOrder } from '@/app/lib/actions';
 import { useState } from 'react';
 
 export default function TechEditOrderDetail({ order }: { order: Order }) {
@@ -55,6 +55,12 @@ export default function TechEditOrderDetail({ order }: { order: Order }) {
           className="rounded-md bg-sky-300 px-3 py-2 text-black hover:bg-sky-400"
         >
           Cerrar
+        </button>
+        <button
+          onClick={() => freeOrder(orderUpdate)}
+          className="ml-auto rounded-md bg-amber-300 px-3 py-2 text-black hover:bg-amber-400"
+        >
+          Liberar
         </button>
       </div>
     </>

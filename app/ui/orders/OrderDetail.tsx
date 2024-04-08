@@ -1,12 +1,15 @@
 import { Order } from '@/app/lib/definitions';
 import {
+  canEdit,
   getOrderDiagnosis,
   getOrderState,
   getOrderTier,
   getOrderTierBackground,
   getOrderUbication,
+  isInProcess,
 } from '@/app/lib/utils';
 import TechEditOrderDetail from './TechEditOrderDetail';
+import Diagnosis from './Diagnosis';
 
 export default function OrderDetail({ order }: { order: Order }) {
   return (
@@ -51,7 +54,11 @@ export default function OrderDetail({ order }: { order: Order }) {
           <strong>Falla: </strong>
           {order.falla}
         </p>
-        <TechEditOrderDetail order={order} />
+        {isInProcess(order.estado) && canEdit(order.tecnico) ? (
+          <TechEditOrderDetail order={order} />
+        ) : (
+          <Diagnosis order={order} />
+        )}
       </div>
     </div>
   );
