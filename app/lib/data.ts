@@ -65,3 +65,23 @@ export const getOrderPendings = async () => {
     console.log(error);
   }
 };
+
+export const searchProducts = async (search: string) => {
+  unstable_noStore();
+  const path = `http://localhost:3400/api/products/search-by?description=${search}`;
+  try {
+    const data = await fetch(path, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const response = await data.json();
+    if (response.status === 'success') return response.products;
+
+    return [];
+  } catch (error) {
+    console.log(error);
+  }
+};

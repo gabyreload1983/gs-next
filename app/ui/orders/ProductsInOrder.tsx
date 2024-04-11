@@ -9,7 +9,9 @@ export default function ProductsInOrder({ order }: { order: Order }) {
       {order.products.map((p) => (
         <div className="flex gap-2" key={p.serie}>
           <div className="hidden w-28 lg:block">{p.codart}</div>
-          <div>{p.descart}</div>
+          <div className="overflow-hidden text-ellipsis whitespace-nowrap">
+            {p.descart}
+          </div>
           <div className="ml-auto">${p.priceList1WithTax.toFixed()}</div>
         </div>
       ))}
@@ -25,7 +27,7 @@ export default function ProductsInOrder({ order }: { order: Order }) {
       <div className="mt-auto py-2">
         {validateRole(['premium']) && (
           <Link
-            href={`/dashboard/orders/${order.nrocompro}`}
+            href={`/dashboard/orders/edit/products/${order.nrocompro}`}
             className="rounded-md bg-amber-200 px-3 py-2 text-black hover:bg-amber-300"
           >
             Editar
