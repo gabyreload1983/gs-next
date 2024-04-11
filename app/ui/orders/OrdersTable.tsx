@@ -4,6 +4,7 @@ import {
   getOrderTier,
   getOrderTierBackground,
   isPending,
+  validateRole,
 } from '@/app/lib/utils';
 import Link from 'next/link';
 import { getOrders } from '@/app/lib/data';
@@ -62,9 +63,10 @@ export default async function OrdersTable({
                         Detalle
                       </span>
                     </Link>
-                    {isPending(order.estado) && (
-                      <TakeOrderMovilButton id={order.nrocompro} />
-                    )}
+                    {isPending(order.estado) &&
+                      validateRole(['technical', 'premium']) && (
+                        <TakeOrderMovilButton id={order.nrocompro} />
+                      )}
                   </div>
                   <p>{order.tecnico}</p>
                 </div>
@@ -132,9 +134,10 @@ export default async function OrdersTable({
                     </Link>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {isPending(order.estado) && (
-                      <TakeOrderIconButton id={order.nrocompro} />
-                    )}
+                    {isPending(order.estado) &&
+                      validateRole(['technical', 'premium']) && (
+                        <TakeOrderIconButton id={order.nrocompro} />
+                      )}
                   </td>
                 </tr>
               ))}
