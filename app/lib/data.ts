@@ -47,3 +47,21 @@ export const getOrders = async ({
     console.log(error);
   }
 };
+
+export const getOrderPendings = async () => {
+  unstable_noStore();
+  const path = `http://localhost:3400/api/orders/pendings-all`;
+  try {
+    const data = await fetch(path, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const response = await data.json();
+    return response.payload;
+  } catch (error) {
+    console.log(error);
+  }
+};

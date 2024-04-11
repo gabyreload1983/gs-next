@@ -27,13 +27,17 @@ const links = [
   },
 ];
 
-export default function NavLinksOrdersPc() {
+export default function NavLinksOrdersPc({
+  quantities,
+}: {
+  quantities: number[];
+}) {
   const searchParams = useSearchParams();
   const param = searchParams.get('pcMenu') || '';
 
   return (
     <>
-      {links.map((link) => {
+      {links.map((link, index) => {
         const LinkIcon = link.icon;
         return (
           <Link
@@ -45,6 +49,9 @@ export default function NavLinksOrdersPc() {
           >
             <LinkIcon className="w-6" />
             <p className="hidden md:block">{link.name}</p>
+            <span className="rounded-xl bg-slate-300 p-1 text-black">
+              {quantities[index]}
+            </span>
           </Link>
         );
       })}

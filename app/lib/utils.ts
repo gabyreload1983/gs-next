@@ -126,3 +126,28 @@ export const validateRole = (roles: string[]): Boolean => {
   const user = getUser();
   return roles.includes(user.role);
 };
+
+export const getOrdersQuantity = (ordersPending: any[], sector: string) => {
+  const user = getUser();
+  const pcOrderPendings: number = ordersPending.reduce(
+    (acc, val) =>
+      val.codiart === sector && val.estado === 21 ? (acc = acc + 1) : acc,
+    0,
+  );
+  const myOrders: number = ordersPending.reduce(
+    (acc, val) =>
+      val.tecnico === user.code_technical && val.estado === 22
+        ? (acc = acc + 1)
+        : acc,
+    0,
+  );
+  const inProcess: number = ordersPending.reduce(
+    (acc, val) =>
+      val.codiart === sector && val.estado === 22 ? (acc = acc + 1) : acc,
+    0,
+  );
+
+  const quantities: number[] = [pcOrderPendings, myOrders, inProcess];
+
+  return quantities;
+};
