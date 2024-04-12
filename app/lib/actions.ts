@@ -25,3 +25,7 @@ export async function freeOrder(order: Order) {
 export async function outOrder(order: Order) {
   console.log(`Out order ${order.nrocompro}`);
 }
+
+export async function updateOrder(order: Order) {
+  console.log(`Update order ${order.nrocompro}`);
+}

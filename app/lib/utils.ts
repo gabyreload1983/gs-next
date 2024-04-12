@@ -29,7 +29,7 @@ export const getUser = (): User => {
     code_technical: 'GABYT',
     first_name: 'gabriel',
     last_name: 'godoy',
-    role: 'technical',
+    role: 'premium',
   };
 
   return user;

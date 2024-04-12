@@ -2,6 +2,7 @@ import { Order, Product, ProductInOrder } from '@/app/lib/definitions';
 import SearchProducts from '../searchProducts';
 import { searchProducts } from '@/app/lib/data';
 import ProductList from './ProductList';
+import UpdateOrderButton from './UpdateOrderButton';
 
 export default async function EditProductsInOrder({
   order,
@@ -25,9 +26,7 @@ export default async function EditProductsInOrder({
       </div>
       <ProductList products={products} />
 
-      <button className="rounded-md bg-green-200 px-3 py-2 text-black hover:bg-green-400">
-        Guardar
-      </button>
+      <UpdateOrderButton order={order} />
     </div>
   );
 }
