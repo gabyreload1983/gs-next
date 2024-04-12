@@ -29,3 +29,7 @@ export async function outOrder(order: Order) {
 export async function updateOrder(order: Order) {
   console.log(`Update order ${order.nrocompro}`);
 }
+
+export async function deleteProductFromOrder(order: Order, serie: string) {
+  console.log(`Delete product serie: ${serie} from order ${order.nrocompro}`);
+}

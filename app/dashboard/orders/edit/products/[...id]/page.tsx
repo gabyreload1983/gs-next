@@ -1,7 +1,7 @@
 import { getOrder } from '@/app/lib/data';
 import { Order } from '@/app/lib/definitions';
 import EditProductsInOrder from '@/app/ui/orders/EditProductsInOrder';
-import ProductsInOrder from '@/app/ui/orders/ProductsInOrder';
+import ProductsInOrderList from '@/app/ui/orders/ProductsInOrderList';
 import { notFound } from 'next/navigation';
 
 export default async function EditOrder({
@@ -24,7 +24,7 @@ export default async function EditOrder({
   return (
     <div className="grid grid-cols-1 gap-3 lg:max-w-full xl:grid-cols-2">
       <EditProductsInOrder order={order} search={search} />
-      <ProductsInOrder order={order} />
+      <ProductsInOrderList order={order} />
     </div>
   );
 }

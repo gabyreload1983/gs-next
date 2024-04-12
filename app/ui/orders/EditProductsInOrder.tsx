@@ -1,4 +1,4 @@
-import { Order, Product, ProductInOrder } from '@/app/lib/definitions';
+import { Order, Product } from '@/app/lib/definitions';
 import SearchProducts from '../searchProducts';
 import { searchProducts } from '@/app/lib/data';
 import ProductList from './ProductList';
